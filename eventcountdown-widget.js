@@ -49,9 +49,22 @@
       const now = new Date().getTime();
       const distance = endTime.getTime() - now;
 
+      // if (distance <= 0) {
+      //   timerDisplay.innerHTML = "🎉 It's time!";
+      //   clearInterval(interval);
+      //   return;
+      // }
+
       if (distance <= 0) {
         timerDisplay.innerHTML = "🎉 It's time!";
         clearInterval(interval);
+      
+        // Auto-close after 2 hours (in milliseconds)
+        setTimeout(() => {
+          const widget = document.getElementById("countdown-widget");
+          if (widget) widget.remove();
+        }, 2 * 60 * 60 * 1000); // 2 hours
+      
         return;
       }
 
